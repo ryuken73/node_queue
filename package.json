@@ -1,0 +1,19 @@
+{
+  "name": "node_queue",
+  "version": "1.0.0",
+  "description": "node queue implement",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryuken73/node_queue.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ryuken73/node_queue/issues"
+  },
+  "homepage": "https://github.com/ryuken73/node_queue#readme"
+}
