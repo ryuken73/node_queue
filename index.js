@@ -21,8 +21,12 @@ taskRunner.on('start',function(){
 
 taskRunner.on('end',function(){
     this.running--;
-    nextJob = jobQueue.popQueue()
-    this.runJob(nextJob)
+    if ( jobQueue.getLength() > 0 ) {
+        nextParam = jobQueue.popQueue()
+        this.runJob(nextParam)
+    } else {
+        console.log('end');
+    }
 })
 
 jobQueue.queue = [];
@@ -39,16 +43,21 @@ jobQueue.pushQueue = function(job){
 }
 
 jobQueue.popQueue = function(job){
-    this.queue.pop(job) 
     this.emit('pop', job)   
+    return this.queue.pop(job) 
 }
 
 jobQueue.viewQueue = function(){
     console.log(this.queue)
 }
 
+jobQueue.getLength = function(){
+    return this.queue.length;
+}
+
 jobQueue.pushQueue('1');
 jobQueue.pushQueue('2');
 jobQueue.pushQueue('3');
 
-jobQueue.viewQueue()
+var initParam = jobQueue.popQueue();
+taskRunner.runJob(initParam);
