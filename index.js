@@ -1,3 +1,4 @@
+"use strict"
 var EventEmitter = require('events');
 class JobQueue extends EventEmitter {};
 class TaskRunner extends EventEmitter {};
@@ -22,7 +23,7 @@ taskRunner.on('start',function(){
 taskRunner.on('end',function(){
     this.running--;
     if ( jobQueue.getLength() > 0 ) {
-        nextParam = jobQueue.popQueue()
+        var nextParam = jobQueue.popQueue()
         this.runJob(nextParam)
     } else {
         console.log('end');
